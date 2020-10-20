@@ -12,6 +12,8 @@ var score=0;
 
 var gameOver, restart;
 
+var jumpSound;
+
 localStorage["HighestScore"] = 0;
 
 function preload(){
@@ -31,6 +33,8 @@ function preload(){
   
   gameOverImg = loadImage("gameOver.png");
   restartImg = loadImage("restart.png");
+  
+  jumpSound = loadSound("jump.mp3");
 }
 
 function setup() {
@@ -79,6 +83,7 @@ function draw() {
   
     if(keyDown("space") && trex.y >= 159) {
       trex.velocityY = -12;
+      jumpSound.play();
     }
   
     trex.velocityY = trex.velocityY + 0.8
